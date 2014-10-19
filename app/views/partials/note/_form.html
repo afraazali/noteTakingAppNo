@@ -1,0 +1,11 @@
+<form class="form-horizontal" name="createNoteForm">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input required placeholder="Title" ng-model="note.title" class="form-control input-lg" type="text" name="title"/>
+    </div>
+    <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea class="form-control input-lg" rows="3" name="body" ng-model="note.body"/>
+    </div>
+    <button ng-click="saveNote()" ng-disabled="createNoteForm.$invalid">Create Note</button>
+</form>
