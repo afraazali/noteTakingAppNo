@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.router'
   ])
-  .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/notes');
 
     $stateProvider.state('notesList', {
@@ -28,24 +28,11 @@ angular
     state('notesCreate', {
       url: '/create',
       templateUrl: 'views/partials/note/_form.html',
-      controller: 'MainCtrl'
+      controller: 'NotecreatecontrollerCtrl'
     }).
     state('notesView', {
       url: '/view/:id',
       controller: 'MainCtrl'
     });
-
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
 
   });
