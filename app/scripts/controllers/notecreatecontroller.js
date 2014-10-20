@@ -13,9 +13,9 @@ angular.module('noteTakingAppNoApp')
       var note = new NotesResourceService({
         _links: {
           type: {href: DrupalServerUrls.REST_LINK_URL},
-          title: [{value: this.note.title}],
-          body: [{value: this.note.body}]
-        }
+        },
+        title: [{value: this.note.title}],
+        body: [{value: this.note.body}]
       });
       note.$save(function(response) {
         // @TODO Redirect to notes page
