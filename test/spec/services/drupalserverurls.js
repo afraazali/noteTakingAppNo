@@ -15,4 +15,8 @@ describe('Service: DrupalServerUrls', function () {
     expect(!!DrupalServerUrls).toBe(true);
   });
 
+  it('should have a REST_URL_LINK property', function() {
+    expect(DrupalServerUrls.REST_URL_LINK).toBeDefined();
+  })
+
 });

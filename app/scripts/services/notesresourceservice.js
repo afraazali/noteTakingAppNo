@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc service
- * @name mytasksappApp.NotesResourceService
+ * @name noteTakingAppNoApp.NotesResourceService
  * @description
  * # NotesResourceService
- * Factory in the mytasksappApp.
+ * Factory in the noteTakingAppNoApp.
  */
-angular.module('mytasksappApp')
-  .factory('NotesResourceService', ['$resource', function ($resource) {
-    return $resource('/node/:id', {'id': '@id'}, {
+angular.module('noteTakingAppNoApp')
+  .factory('NotesResourceService', ['$resource', 'DrupalServerUrls', function ($resource, DrupalServerUrls) {
+    return $resource(DrupalServerUrls.DOMAIN + '/node/:id', {'id': '@id'}, {
       get: {
         headers: {
           'Accept': 'application/hal+json'
@@ -17,7 +17,7 @@ angular.module('mytasksappApp')
       },
       save: {
         method: 'POST',
-        url: '/entity/node',
+        url: DrupalServerUrls.DOMAIN + '/entity/node',
         headers: {
           'Content-Type': 'application/hal+json',
           // @TODO Figure out a way to pass credentials.
