@@ -8,7 +8,7 @@
  * Factory in the noteTakingAppNoApp.
  */
 angular.module('noteTakingAppNoApp')
-  .factory('NotesResourceService', ['$resource', 'DrupalServerUrls', function ($resource, DrupalServerUrls) {
+  .factory('NotesResourceService', ['$resource', 'DrupalServerUrls', 'UserService', function ($resource, DrupalServerUrls, UserService) {
     return $resource(DrupalServerUrls.DOMAIN + '/node/:id', {'id': '@id'}, {
       get: {
         headers: {
@@ -22,7 +22,7 @@ angular.module('noteTakingAppNoApp')
           'Content-Type': 'application/hal+json',
           // @TODO Figure out a way to pass credentials.
           // @TODO Dynamically generate this.
-          'Authorization': 'Basic YWRtaW46YWRtaW4='
+          'Authorization': UserService.isAuthenticated()
         }
       }
     });

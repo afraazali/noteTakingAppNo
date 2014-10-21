@@ -33,6 +33,11 @@ angular
     state('notesView', {
       url: '/view/:id',
       controller: 'MainCtrl'
-    });
+    })
+    .state('login', {
+      url: '/login',
+      controller: 'LogincontrollerCtrl',
+      templateUrl: 'views/partials/login/_form.html'
+     });
 
   });
