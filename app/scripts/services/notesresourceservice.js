@@ -20,8 +20,6 @@ angular.module('noteTakingAppNoApp')
         url: DrupalServerUrls.DOMAIN + '/entity/node',
         headers: {
           'Content-Type': 'application/hal+json',
-          // @TODO Figure out a way to pass credentials.
-          // @TODO Dynamically generate this.
           'Authorization': UserService.isAuthenticated()
         }
       }
