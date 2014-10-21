@@ -9,6 +9,8 @@
  */
 angular.module('noteTakingAppNoApp')
   .controller('LogincontrollerCtrl', ['$scope', 'UserService', '$state', function ($scope, UserService, $state) {
+    $scope.errorMessage = '';
+    $scope.hasError = false;
     $scope.login = function() {
       $scope.errorMessage = '';
       $scope.hasError = false;
