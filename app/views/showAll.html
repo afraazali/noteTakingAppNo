@@ -1,6 +1,6 @@
 <div ng-app="noteTakingAppNoApp">
     <!--<h4> {{ notes[0].body[0].value }} </h4>-->
-    <div ng-repeat="note in notes">
+    <div ng-repeat="note in notes | limitTo: 20">
         <h1> {{ note.title[0].value }} </h1>
         <h4> {{ note.body[0].value }} </h4>
     </div>

@@ -15,6 +15,6 @@ angular.module('noteTakingAppNoApp')
                 title: data[0].title[0].value,
                 body: data[0].body[0].value
             };
-            console.log(data[0].title);
+            console.log($scope.noteInfo.title);
         });
     }]);
