@@ -17,16 +17,16 @@
   </head>
   <body ng-app="noteTakingAppNoApp">
     <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+        <ul class="nav nav-pills pull-right" ng-controller="NavcontrollerCtrl">
+          <li ng-if="isLoggedIn == true"><a ng-href="#/create">Add Note</a></li>
+          <li ng-if="isLoggedIn == false"><a ng-href="#/login">Login</a></li>
+          <li ng-if="isLoggedIn == true"><a ng-href="#" ng-click="logout()">Logout</a></li>
         </ul>
         <h3 class="text-muted">noteTakingAppNo</h3>
       </div>
@@ -74,13 +74,15 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/notesresourceservice.js"></script>
         <script src="scripts/services/drupalserverurls.js"></script>
         <script src="scripts/controllers/notecreatecontroller.js"></script>
         <script src="scripts/services/userservice.js"></script>
         <script src="scripts/controllers/logincontroller.js"></script>
+        <script src="scripts/controllers/noteviewcontroller.js"></script>
+        <script src="scripts/controllers/navcontroller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
