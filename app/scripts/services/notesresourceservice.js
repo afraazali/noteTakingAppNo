@@ -9,8 +9,9 @@
  */
 angular.module('noteTakingAppNoApp')
   .factory('NotesResourceService', ['$resource', 'DrupalServerUrls', 'UserService', function ($resource, DrupalServerUrls, UserService) {
-    return $resource(DrupalServerUrls.DOMAIN + '/node/:id', {'id': '@id'}, {
+    return $resource(DrupalServerUrls.DOMAIN + '/note/:id', {'id': '@id'}, {
       get: {
+        isArray: true,
         headers: {
           'Accept': 'application/hal+json'
         }
@@ -25,3 +26,15 @@ angular.module('noteTakingAppNoApp')
       }
     });
   }]);
+
+angular.module('noteTakingAppNoApp')
+    .factory('NotesShowResourceService', ['$resource', 'DrupalServerUrls', function ($resource, DrupalServerUrls) {
+        return $resource(DrupalServerUrls.DOMAIN + '/all-content', '../rest/api.php', {
+            get: {
+                isArray: true,
+                headers: {
+                    'Accept': 'application/hal+json'
+                }
+            }
+        });
+    }]);

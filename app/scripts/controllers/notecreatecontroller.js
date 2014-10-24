@@ -12,7 +12,7 @@ angular.module('noteTakingAppNoApp')
     $scope.saveNote = function() {
       var note = new NotesResourceService({
         _links: {
-          type: {href: DrupalServerUrls.REST_LINK_URL},
+          type: {href: DrupalServerUrls.REST_LINK_URL}
         },
         title: [{value: this.note.title}],
         body: [{value: this.note.body}]

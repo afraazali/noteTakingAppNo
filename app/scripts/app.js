@@ -32,12 +32,18 @@ angular
     }).
     state('notesView', {
       url: '/view/:id',
-      controller: 'MainCtrl'
+      templateUrl: 'views/notes.html',
+      controller: 'NoteviewcontrollerCtrl'
     })
     .state('login', {
       url: '/login',
       controller: 'LogincontrollerCtrl',
       templateUrl: 'views/partials/login/_form.html'
+     })
+     .state('allNotes', {
+      url: '/showAll',
+      controller: 'ShowallnotescontrollerCtrl',
+      templateUrl: 'views/showAll.html'
      });
 
   });
