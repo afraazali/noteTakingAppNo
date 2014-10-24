@@ -32,7 +32,7 @@ angular
     }).
     state('notesView', {
       url: '/view/:id',
-      controller: 'MainCtrl'
+      controller: 'NoteviewcontrollerCtrl'
     })
     .state('login', {
       url: '/login',

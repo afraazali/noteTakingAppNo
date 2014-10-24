@@ -9,6 +9,6 @@
  */
 angular.module('noteTakingAppNoApp')
   .constant('DrupalServerUrls', {
-    'REST_LINK_URL': 'http://testbeddev.devcloud.acquia-sites.com/rest/type/node/page',
+    'REST_LINK_URL': 'http://testbeddev.devcloud.acquia-sites.com/rest/type/node/notes',
     'DOMAIN': 'http://testbeddev.devcloud.acquia-sites.com'
   });
