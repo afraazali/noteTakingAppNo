@@ -9,8 +9,9 @@
  */
 angular.module('noteTakingAppNoApp')
   .factory('NotesResourceService', ['$resource', 'DrupalServerUrls', 'UserService', function ($resource, DrupalServerUrls, UserService) {
-    return $resource(DrupalServerUrls.DOMAIN + '/node/:id', {'id': '@id'}, {
+    return $resource(DrupalServerUrls.DOMAIN + '/note/:id', {'id': '@id'}, {
       get: {
+        isArray: true,
         headers: {
           'Accept': 'application/hal+json'
         }

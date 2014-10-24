@@ -9,17 +9,17 @@
  * Main module of the application.
  */
 angular
-  .module('noteTakingAppNoApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ui.router'
-  ])
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/notes');
+    .module('noteTakingAppNoApp', [
+      'ngAnimate',
+      'ngCookies',
+      'ngResource',
+      'ngRoute',
+      'ngSanitize',
+      'ngTouch',
+      'ui.router'
+    ])
+    .config(function ($stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise('/login');
 
     $stateProvider.state('notesList', {
       url: '/notes',
@@ -27,7 +27,7 @@ angular
         'content': {templateUrl: 'views/notes.html'},
         'menu': {
           templateUrl: 'views/partials/menu/_menu.html',
-          controller: 'MainCtrl'
+          controller: 'NavcontrollerCtrl'
         }
       }
 
@@ -38,7 +38,7 @@ angular
           'content': {templateUrl: 'views/partials/note/_form.html', controller: 'NotecreatecontrollerCtrl'},
           'menu': {
             templateUrl: 'views/partials/menu/_menu.html',
-            controller: 'MainCtrl'
+            controller: 'NavcontrollerCtrl'
           }
         }
 
@@ -53,9 +53,13 @@ angular
           'content': {controller: 'LogincontrollerCtrl', templateUrl: 'views/partials/login/_form.html'},
           'menu': {
             templateUrl: 'views/partials/menu/_menu.html',
-            controller: 'MainCtrl'
+            controller: 'NavcontrollerCtrl'
           }
         }
-     });
+     })
+      .state('logout', {
+      url: '/logout',
+      controller: 'NavcontrollerCtrl'
+    });
 
   });
