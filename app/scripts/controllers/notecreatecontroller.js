@@ -8,8 +8,8 @@
  * Controller of the noteTakingAppNoApp
  */
 angular.module('noteTakingAppNoApp')
-  .controller('NotecreatecontrollerCtrl', ['$scope', 'NotesResourceService', 'DrupalServerUrls', 'UserService', '$location',
-      function ($scope, NotesResourceService, DrupalServerUrls, UserService, $location) {
+  .controller('NotecreatecontrollerCtrl', ['$scope', '$state', 'NotesResourceService', 'DrupalServerUrls', 'UserService', '$location',
+      function ($scope, $state, NotesResourceService, DrupalServerUrls, UserService, $location) {
       var isLoggedIn = UserService.isLoggedIn();
       if (isLoggedIn == true) {
         $scope.saveNote = function() {
@@ -22,11 +22,12 @@ angular.module('noteTakingAppNoApp')
           });
           note.$save(function(response) {
             // @TODO Redirect to notes page
+            $state.go('showallnotesView');
             console.log(response);
           });
         };
       }
       else {
-        $location.path('login');
+        $state.go('login');
       }
   }]);

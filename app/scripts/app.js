@@ -44,8 +44,24 @@ angular
 
     }).
     state('notesView', {
-      url: '/view/:id',
-      controller: 'MainCtrl'
+        url: '/view/:id',
+        views: {
+          'content': {controller: 'NoteviewcontrollerCtrl', templateUrl: 'views/notes.html'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
+            controller: 'NavcontrollerCtrl'
+          }
+        }
+    }).
+    state('showallnotesView', {
+        url: '/showallnotes',
+        views: {
+          'content': {controller: 'ShowallnotescontrollerCtrl', templateUrl: 'views/showAll.html'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
+            controller: 'NavcontrollerCtrl'
+          }
+        }
     })
     .state('login', {
       url: '/login',

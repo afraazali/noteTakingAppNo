@@ -12,7 +12,7 @@ angular.module('noteTakingAppNoApp')
       $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         if (toState.name === 'logout') {
           UserService.logout();
-          $state.transitionTo('login');
+          $state.go('login');
         }
       });
     
@@ -22,6 +22,7 @@ angular.module('noteTakingAppNoApp')
 
       if ($scope.isLoggedIn) {
         $scope.menuItems.push({'href': '#/create', 'title': 'Add Note'});
+        $scope.menuItems.push({'href': '#/showallnotes', 'title': 'Show All Notes'});
         $scope.menuItems.push({'href': '#/logout', 'title': 'Logout'});
       }
       else {

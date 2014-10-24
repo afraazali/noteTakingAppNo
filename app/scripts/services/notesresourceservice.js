@@ -26,3 +26,15 @@ angular.module('noteTakingAppNoApp')
       }
     });
   }]);
+
+angular.module('noteTakingAppNoApp')
+    .factory('NotesShowResourceService', ['$resource', 'DrupalServerUrls', function ($resource, DrupalServerUrls) {
+        return $resource(DrupalServerUrls.DOMAIN + '/all-content', '../rest/api.php', {
+            get: {
+                isArray: true,
+                headers: {
+                    'Accept': 'application/hal+json'
+                }
+            }
+        });
+    }]);

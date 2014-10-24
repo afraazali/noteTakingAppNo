@@ -8,16 +8,13 @@
  * Controller of the noteTakingAppNoApp
  */
 angular.module('noteTakingAppNoApp')
-    .controller('NoteviewcontrollerCtrl', ['$scope', '$stateParams','NotesResourceService', 'DrupalServerUrls', function ($scope, $stateParams, NotesResourceService, DrupalServerUrls) {
-        var output = NotesResourceService.get({id : $stateParams.id}, function() {
+    .controller('NoteviewcontrollerCtrl', ['$scope', '$stateParams', 'NotesResourceService', 'DrupalServerUrls', function ($scope, $stateParams,NotesResourceService, DrupalServerUrls) {
+        //console.log(NotesResourceService.get());
+        NotesResourceService.get({id: $stateParams.id},function(data){
+            $scope.noteInfo = {
+                title: data[0].title[0].value,
+                body: data[0].body[0].value
+            };
+            console.log($scope.noteInfo.title);
         });
-        //NotesResourceService.get().success(function(data){
-        //    //assign value
-        //    $scope.noteInfo = {
-        //        title: data.title[0].value,
-        //        body: data.body[0].value
-        //    };
-        //}).error(function(){
-        //    console.log('error');
-        //});
     }]);
