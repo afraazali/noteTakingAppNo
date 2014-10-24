@@ -75,7 +75,17 @@ angular
      })
       .state('logout', {
       url: '/logout',
-      controller: 'NavcontrollerCtrl'
+      views: {
+        'content': {
+          template: 'Logged out'
+        },
+        'menu': {
+          templateUrl: 'views/partials/menu/_menu.html',
+          controller: 'NavcontrollerCtrl'
+        }
+
+      }
+
     });
 
   });

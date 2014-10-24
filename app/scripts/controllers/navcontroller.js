@@ -9,23 +9,26 @@
  */
 angular.module('noteTakingAppNoApp')
     .controller('NavcontrollerCtrl', ['$scope', 'UserService', '$rootScope', '$state', function ($scope, UserService, $rootScope, $state) {
-      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         if (toState.name === 'logout') {
           UserService.logout();
           $state.go('login');
         }
+        if (toState.name === 'login' && UserService.isLoggedIn()) {
+          $state.go('showallnotesView');
+        }
       });
-    
+
       $scope.isLoggedIn = UserService.isLoggedIn();
 
       $scope.menuItems = [];
 
       if ($scope.isLoggedIn) {
-        $scope.menuItems.push({'href': '#/create', 'title': 'Add Note'});
-        $scope.menuItems.push({'href': '#/showallnotes', 'title': 'Show All Notes'});
-        $scope.menuItems.push({'href': '#/logout', 'title': 'Logout'});
+        $scope.menuItems.push({'sref': 'notesCreate', 'title': 'Add Note'});
+        $scope.menuItems.push({'sref': 'showallnotesView', 'title': 'Show All Notes'});
+        $scope.menuItems.push({'sref': 'logout', 'title': 'Logout'});
       }
       else {
-        $scope.menuItems.push({'href': '#/login', 'title': 'Login'});
+        $scope.menuItems.push({'sref': 'login', 'title': 'Login'});
       }
 }]);
