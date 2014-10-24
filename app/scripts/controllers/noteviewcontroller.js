@@ -9,9 +9,7 @@
  */
 angular.module('noteTakingAppNoApp')
     .controller('NoteviewcontrollerCtrl', ['$scope', '$stateParams','NotesResourceService', 'DrupalServerUrls', function ($scope, $stateParams, NotesResourceService, DrupalServerUrls) {
-        console.log($stateParams.id);
         var output = NotesResourceService.get({id : $stateParams.id}, function() {
-            console.log(output);
         });
         //NotesResourceService.get().success(function(data){
         //    //assign value
