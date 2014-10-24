@@ -25,8 +25,5 @@ angular.module('noteTakingAppNoApp')
           });
         };
       }
-      else {
-        // should redirect to all notes page.
-      }
 
   }]);

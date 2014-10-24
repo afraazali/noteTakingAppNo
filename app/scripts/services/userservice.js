@@ -35,7 +35,6 @@ angular.module('noteTakingAppNoApp')
             isAuthenticated: function () {
                 return 'Basic ' + $cookieStore.get('authenticated');
             },
-
             isLoggedIn: function () {
                 var isLogged = $cookieStore.get('authenticated');
                 if (isLogged == null) {

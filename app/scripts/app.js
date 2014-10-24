@@ -21,22 +21,45 @@ angular
     .config(function ($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/login');
 
-      $stateProvider.state('notesList', {
-        url: '/login',
-        controller: 'LogincontrollerCtrl',
-        templateUrl: 'views/partials/login/_form.html'
-      }).
-          state('notesCreate', {
-            url: '/create',
-            templateUrl: 'views/partials/note/_form.html',
-            controller: 'NotecreatecontrollerCtrl'
-          }).
-          state('notesView', {
-            url: '/view/:id',
-            controller: 'NoteviewcontrollerCtrl'
-          }).
-          state('logout', {
-            url: '/logout',
+    $stateProvider.state('notesList', {
+      url: '/notes',
+      views: {
+        'content': {templateUrl: 'views/notes.html'},
+        'menu': {
+          templateUrl: 'views/partials/menu/_menu.html',
+          controller: 'NavcontrollerCtrl'
+        }
+      }
+
+    }).
+    state('notesCreate', {
+      url: '/create',
+        views: {
+          'content': {templateUrl: 'views/partials/note/_form.html', controller: 'NotecreatecontrollerCtrl'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
             controller: 'NavcontrollerCtrl'
-          });
-});
+          }
+        }
+
+    }).
+    state('notesView', {
+      url: '/view/:id',
+      controller: 'MainCtrl'
+    })
+    .state('login', {
+      url: '/login',
+        views: {
+          'content': {controller: 'LogincontrollerCtrl', templateUrl: 'views/partials/login/_form.html'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
+            controller: 'NavcontrollerCtrl'
+          }
+        }
+     })
+      .state('logout', {
+      url: '/logout',
+      controller: 'NavcontrollerCtrl'
+    });
+
+  });
