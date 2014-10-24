@@ -33,6 +33,10 @@ angular.module('noteTakingAppNoApp')
         return 'Basic ' + $cookieStore.get('authenticated');
       },
 
+      isAuthed: function() {
+        return (typeof $cookieStore.get('authenticated') !== 'undefined');
+      },
+
       logout: function() {
         $cookieStore.remove('authenticated');
       }

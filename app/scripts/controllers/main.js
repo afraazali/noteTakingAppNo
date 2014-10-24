@@ -8,10 +8,13 @@
  * Controller of the noteTakingAppNoApp
  */
 angular.module('noteTakingAppNoApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl',['$scope', 'UserService', function ($scope, UserService) {
+    $scope.menuItems = [];
+
+    if (UserService.isAuthed()) {
+      $scope.menuItems.push('Logged In');
+    }
+    else {
+      $scope.menuItems.push('Logged Out');
+    }
+  }]);

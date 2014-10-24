@@ -23,12 +23,25 @@ angular
 
     $stateProvider.state('notesList', {
       url: '/notes',
-      templateUrl: 'views/notes.html'
+      views: {
+        'content': {templateUrl: 'views/notes.html'},
+        'menu': {
+          templateUrl: 'views/partials/menu/_menu.html',
+          controller: 'MainCtrl'
+        }
+      }
+
     }).
     state('notesCreate', {
       url: '/create',
-      templateUrl: 'views/partials/note/_form.html',
-      controller: 'NotecreatecontrollerCtrl'
+        views: {
+          'content': {templateUrl: 'views/partials/note/_form.html', controller: 'NotecreatecontrollerCtrl'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
+            controller: 'MainCtrl'
+          }
+        }
+
     }).
     state('notesView', {
       url: '/view/:id',
@@ -36,8 +49,13 @@ angular
     })
     .state('login', {
       url: '/login',
-      controller: 'LogincontrollerCtrl',
-      templateUrl: 'views/partials/login/_form.html'
+        views: {
+          'content': {controller: 'LogincontrollerCtrl', templateUrl: 'views/partials/login/_form.html'},
+          'menu': {
+            templateUrl: 'views/partials/menu/_menu.html',
+            controller: 'MainCtrl'
+          }
+        }
      });
 
   });
